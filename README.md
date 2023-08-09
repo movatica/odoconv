@@ -1,11 +1,11 @@
 # odoconv
 
-**odoconv** ist ein Kunstwort aus *odometer* (engl. für Tacho) und *converter*.
+**odoconv** ist ein Kunstwort aus *odometer* (engl. für Hodometer bzw. Wegmesser) und *converter*.
 
 Die hier beschriebene elektronische Schaltung konvertiert die Wechselspannung eines Nabendynamos in ein Schaltsignal, mit dem normale Sigma-Fahrradtachos angesteuert werden können.
-Damit entfällt die Installation des Magnetsignalgebers am Rad.
+Damit entfällt die Installation des Reedkontakts am Vorderrad.
 
-Das macht zwar nichts einfacher, ich finde es aber eleganter :>
+Das macht zwar nichts wirklich einfacher, ich finde es so aber eleganter :blush:
 
 ## Projektstruktur
 
@@ -50,6 +50,16 @@ In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorge
     ![Arduino Uno ISP Hat](images/arduino_uno_isp_hat.jpg)
 5. Für die Programmierung muss jetzt die Option *Sketch -> Upload Using Programmer* genutzt werden, sonst schlägt sie mit der Meldung `Upload error: A programmer is required to upload` fehl.  
     ![Arduino IDE: Upload mit Programmer](images/arduino_ide_sketch_menu.png)
+
+## Limitierungen
+
+Der eingesetzte Spannungsregler ist nur bis 25V (Peak 60V) ausgelegt.
+Da die gesamte Schaltung absichtlich sehr wenig Strom verbraucht, muss am Dynamo eine zusätzliche Last, z.B. eine Lampe, betrieben werden!
+Bei normaler Last pendelt sich die Dynamo-Spannung bei ca. 6,3V ein. Ohne Last steigt die Spannung quasi unbegrenzt, proportional zur Geschwindigkeit. Bei z.B. Bergabfahrten mit > 30 kmh können Spannungen über 100V auftreten, die die Schaltung nicht verträgt.
+
+Die einfachste und gängige Lösung ist der Dauerbetrieb des Fahrradlichts.
+
+Alternativ kann entweder ein einfaches Schaltnetzteil konstruiert werden, was die Schaltung unverhältnismäßig komplex machen würde. Oder man ersetzt die Spannungsversorgung durch eine Knopfzelle, was sinnloserweise noch eine weitere Stromquelle (neben dem Dynamo und der Tacho-Batterie) einführen würde.
 
 ## ToDo
 
