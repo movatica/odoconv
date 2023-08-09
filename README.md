@@ -9,7 +9,7 @@ Das macht zwar nichts einfacher, ich finde es aber eleganter :>
 
 ## Projektstruktur
 
-- `case/` enthält das FreeCAD-Projekt für das Gehäuse.
+- `casing/` enthält das FreeCAD-Projekt für das Gehäuse.
 - `circuit/` enthält das KiCAD-Projekt für die Schaltung (Schaltplan und PCB-Layout).
 - `odoconv.ino` ist die Quelldatei um den ATtiny85 mit der Arduino IDE zu programmieren.
 
@@ -31,8 +31,9 @@ Die Schaltung besteht aus vier Teilen:
 3. Mikrocontroller: ein ATtiny85 fungiert als Zähler.
 4. Signalausgang: ein weiterer Optokoppler schaltet das Tacho-Signal. Der Phototransistor des Optokopplers ersetzt dabei den Reed-Kontakt des Tachos.
 
-![Schaltplan](image/circuit.png)
-![Rendering der fertig bestückten Platine](image/pcb_3drender.png)
+![Schaltplan](images/circuit.png)
+
+![Rendering der fertig bestückten Platine](images/pcb_3drender.png)
 
 ## Teileliste
 
@@ -40,11 +41,11 @@ Die Schaltung besteht aus vier Teilen:
 
 In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorgesehen.
 
-1. Zunächst muss unter *File -> Preferences -> Settings -> Additional boards manager URLs* diese URL eingetragen werden:
+1. Zunächst muss unter *File -> Preferences -> Settings -> Additional boards manager URLs* diese URL eingetragen werden:  
     `https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json`
 2. Dann muss im *Boardmanager* die Bibliothek "**attiny** by David A. Mellis" in der aktuellen Version installiert werden.
 3. Jetzt kann das korrekte Board ausgewählt werden: *Tools -> Board -> attiny -> ATtiny25/45/85*
-4. Als Programmer entsprechend das eigene Setup auswählen. Ich benutze "Arduino as ISP" auf einem Arduino Uno. Für die korrekte Verkabelung habe ich mit einen passenden Hat gelötet.
+4. Als Programmer entsprechend das eigene Setup auswählen. Ich benutze *Arduino as ISP* auf einem *Arduino Uno*. Für die korrekte Verkabelung habe ich mit einen passenden Hat gelötet.
 
 ## ToDo
 
