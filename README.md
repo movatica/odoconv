@@ -39,13 +39,17 @@ Die Schaltung besteht aus vier Teilen:
 
 ## Mikrocontroller programmieren
 
-In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorgesehen.
+In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorgesehen. Für ATtiny Mikrocontroller hat David Mellis eine passende [Bibliothek auf GitHub](https://github.com/damellis/attiny) veröffentlicht.
 
 1. Zunächst muss unter *File -> Preferences -> Settings -> Additional boards manager URLs* diese URL eingetragen werden:  
     `https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json`
 2. Dann muss im *Boardmanager* die Bibliothek "**attiny** by David A. Mellis" in der aktuellen Version installiert werden.
-3. Jetzt kann das korrekte Board ausgewählt werden: *Tools -> Board -> attiny -> ATtiny25/45/85*
-4. Als Programmer entsprechend das eigene Setup auswählen. Ich benutze *Arduino as ISP* auf einem *Arduino Uno*. Für die korrekte Verkabelung habe ich mit einen passenden Hat gelötet.
+3. Jetzt kann das korrekte Board ausgewählt werden: *Tools -> Board -> attiny -> ATtiny25/45/85*  
+    ![Arduino IDE: Boardkonfiguration](images/arduino_ide_tools_menu.png)
+4. Als Programmer benutze ich einen *Arduino Uno* als ISP. Wie das geht, wird [hier erläutert](https://docs.arduino.cc/built-in-examples/arduino-isp/ArduinoISP). Für die korrekte Verkabelung habe ich mir einen passenden Hat gelötet.  
+    ![Arduino Uno ISP Hat](images/arduino_uno_isp_hat.jpg)
+5. Für die Programmierung muss jetzt die Option *Sketch -> Upload Using Programmer* genutzt werden, sonst schlägt sie mit der Meldung `Upload error: A programmer is required to upload` fehl.  
+    ![Arduino IDE: Upload mit Programmer](images/arduino_ide_sketch_menu.png)
 
 ## ToDo
 
