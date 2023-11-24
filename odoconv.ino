@@ -48,6 +48,7 @@ int main(void)
     // disable unused features to reduce power consumption
     ADCSRA = 0; // disable ADC
     WDTCR = 0; // disable watchdog
+    PRR &= ~_BV(PRADC) & ~_BV(PRTIM1); // disable unused ADC and TIMER1 through the Power Reduction Register
     
     // configure PB2 (0xf - 0x4 = 0xb) as input, others as output
     DDRB = ~_BV(INPUT_PIN);
@@ -66,11 +67,11 @@ int main(void)
         if (output)
         {
             --output;
-            enable_pin(PORTB, OUTPUT_PIN); // enable output pin
+            enable_pin(PORTB, OUTPUT_PIN);
         }
         else
         {
-            disable_pin(PORTB, OUTPUT_PIN); // disable output pin
+            disable_pin(PORTB, OUTPUT_PIN);
         }
         sei();
         
