@@ -5,3 +5,8 @@ casing/odoconv_casing.FCStd1
 circuit/fp-info-cache
 circuit/*-backups/
 circuit/*.lck
+
+# Temporary build files for avrgcc
+*.o
+*.elf
+*.hex

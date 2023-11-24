@@ -39,6 +39,8 @@ Die Schaltung besteht aus vier Teilen:
 
 ## Mikrocontroller programmieren
 
+### Arduino IDE
+
 In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorgesehen. Für ATtiny Mikrocontroller hat David Mellis eine passende [Bibliothek auf GitHub](https://github.com/damellis/attiny) veröffentlicht.
 
 1. Zunächst muss unter *File -> Preferences -> Settings -> Additional boards manager URLs* diese URL eingetragen werden:  
@@ -50,6 +52,17 @@ In der Arduino IDE sind native Atmel Mikrocontroller standardmäßig nicht vorge
     ![Arduino Uno ISP Hat](images/arduino_uno_isp_hat.jpg)
 5. Für die Programmierung muss jetzt die Option *Sketch -> Upload Using Programmer* genutzt werden, sonst schlägt sie mit der Meldung `Upload error: A programmer is required to upload` fehl.  
     ![Arduino IDE: Upload mit Programmer](images/arduino_ide_sketch_menu.png)
+
+### avr-gcc und avrdude
+
+Unter Linux kann der ATtiny mithilfe des Makefiles auch ohne ArduinoIDE programmiert werden.
+Dazu muss die `avr-libc` als Basisbibliothek, `avr-gcc` für das Übersetzen des Quellcodes und `avrdude` für die Programmierung per ISP installiert sein.
+Für Debian-basierte Systeme z.B. so:
+    `# apt-get install avr-gcc avr-libc avrdude`
+
+Ist alles installiert, wird der Quellcode mit `make all` übersetzt.
+
+Zur Programmierung des ATtiny wird der gleiche Aufbau mit ArduinoISP verwendet, wie im vorigen Abschnitt beschrieben. `make program` beschreibt den Mikrocontroller. Gegebenenfalls muss die Konfiguration des Programmers am Anfang des Makefiles angepasst werden.
 
 ## Limitierungen
 
@@ -67,5 +80,4 @@ Alternativ kann entweder ein einfaches Schaltnetzteil konstruiert werden, was di
 - [ ] Die Optokoppler brauchen viel Platz, vllt können die wegoptimiert werden.
 - [ ] Gehäuse als Dock für den Tacho bauen, spart Umbauten am Kabel und Platz am Fahrrad
 - [ ] Programmier-/Debug-Schnittstelle für den ATTiny direkt auf der Platine
-- [ ] Abhängigkeit von Arduino-Studio reduzieren, stattdessen ein Makefile für `avr-gcc`
 - [ ] Projektdoku zweisprachig deutsch/englisch
